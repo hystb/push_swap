@@ -12,17 +12,13 @@
 
 #include "push_swap.h"
 
-void	fill_a(char *str, t_list **a, t_list **b, t_list **done)
+void	fill_a(char *str, t_list **a, int *first)
 {
 	int	need_split;
 
 	need_split = 0;
-	ft_printf("ok1\n");
 	is_correct_nb(str, &need_split);
-	ft_printf("ok2\n");
-	put_data(str, a, &need_split);
-	ft_printf("ok3\n");
-	is_double_nb(a, b, done);
+	put_data(str, a, &need_split, first);
 }
 
 void	is_correct_nb(char *str, int *need_split)
@@ -53,27 +49,28 @@ void	is_correct_nb(char *str, int *need_split)
 	}
 }
 
-void	put_data(char *str, t_list **a, int *need_split)
+void	put_data(char *str, t_list **a, int *need_split, int *first)
 {
 	char	**splited;
 	int		i;
-	t_list	*tmp;
 
 	i = 0;
-	ft_printf("%d", *need_split);
 	if (need_split == 0)
 	{
-		tmp = ft_lstnew(str);
-		ft_printf("%s\n", tmp->content);
-		ft_lstadd_back(a, tmp);
+		if ((*first)++ == 0)
+			*a = ft_lstnew(str);
+		else
+			ft_lstadd_back(a, ft_lstnew(str));
 	}
 	else
 	{
 		splited = ft_split(str, ' ');
 		while (splited[i] != NULL)
 		{
-			tmp = ft_lstnew(splited[i]);
-			ft_lstadd_back(a, tmp);
+			if ((*first)++ == 0)
+				*a = ft_lstnew(str);
+			else
+				ft_lstadd_back(a, ft_lstnew(splited[i]));
 			i++;
 		}
 	}
@@ -83,9 +80,11 @@ void	is_double_nb(t_list **a, t_list **b, t_list **done)
 {
 	t_list	*tmp;
 	t_list	*tmp_cmp;
+	t_list	*first_node;
 	int		found;
 
 	tmp_cmp = *a;
+	first_node = *a;
 	while (tmp_cmp)
 	{
 		tmp = *a;

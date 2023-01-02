@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:40:36 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/02 14:22:23 by nmilan           ###   ########.fr       */
+/*   Created: 2023/01/02 14:49:34 by nmilan            #+#    #+#             */
+/*   Updated: 2023/01/02 14:50:32 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	sort(t_list **a, t_list **b, t_list **done)
 {
-	t_list	*tmp;
-	t_list	*address_tmp;
-
-	if (!lst || !del)
-		return ;
-	tmp = *lst;
-	while (tmp)
-	{
-		address_tmp = tmp->next;
-		del(tmp->content);
-		free(tmp);
-		tmp = address_tmp;
-	}
-	*lst = NULL;
+	
 }
