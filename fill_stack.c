@@ -14,14 +14,11 @@
 
 void	fill_a(char *str, t_list **a, int *first)
 {
-	int	need_split;
-
-	need_split = 0;
-	is_correct_nb(str, &need_split);
-	put_data(str, a, &need_split, first);
+	is_correct_nb(str);
+	put_data(str, a, first);
 }
 
-void	is_correct_nb(char *str, int *need_split)
+void	is_correct_nb(char *str)
 {
 	int	i;
 
@@ -34,11 +31,6 @@ void	is_correct_nb(char *str, int *need_split)
 			ft_printf("Error\n");
 			exit(0);
 		}
-		if (i != 0 && str[i] == ' '
-			&& ((str[i - 1] >= '0' && str[i - 1] <= '9') || str[i] == ' ')
-			&& ((str[i + 1] >= '0' && str[i + 1] <= '9') || str[i + 1] == '-'
-				|| str[i] == ' ') && *need_split != 1)
-			*need_split = 1;
 		if (i != 0 && str[i] == '-' && (!(str[i + 1] >= '0'
 					&& str[i + 1] <= '9') || str[i - 1] != ' '))
 		{
@@ -49,31 +41,22 @@ void	is_correct_nb(char *str, int *need_split)
 	}
 }
 
-void	put_data(char *str, t_list **a, int *need_split, int *first)
+void	put_data(char *str, t_list **a, int *first)
 {
 	char	**splited;
 	int		i;
 
 	i = 0;
-	if (need_split == 0)
+	splited = ft_split(str, ' ');
+	while (splited[i] != NULL)
 	{
 		if ((*first)++ == 0)
-			*a = ft_lstnew(str);
+			*a = ft_lstnew(splited[i]);
 		else
-			ft_lstadd_back(a, ft_lstnew(str));
+			ft_lstadd_back(a, ft_lstnew(splited[i]));
+		i++;
 	}
-	else
-	{
-		splited = ft_split(str, ' ');
-		while (splited[i] != NULL)
-		{
-			if ((*first)++ == 0)
-				*a = ft_lstnew(str);
-			else
-				ft_lstadd_back(a, ft_lstnew(splited[i]));
-			i++;
-		}
-	}
+	free(splited);
 }
 
 void	is_double_nb(t_list **a, t_list **b, t_list **done)
