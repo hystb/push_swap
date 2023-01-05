@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void	fill_a(char *str, t_list **a, int *first)
+void	fill_a(char *str, t_list **a)
 {
 	is_correct_nb(str);
-	put_data(str, a, first);
+	put_data(str, a);
 }
 
 void	is_correct_nb(char *str)
@@ -28,20 +28,20 @@ void	is_correct_nb(char *str)
 		if (!(str[i] >= '0' && str[i] <= '9')
 			&& !(str[i] == ' ' || str[i] == '-'))
 		{
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
 		if (i != 0 && str[i] == '-' && (!(str[i + 1] >= '0'
 					&& str[i + 1] <= '9') || str[i - 1] != ' '))
 		{
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
 		i++;
 	}
 }
 
-void	put_data(char *str, t_list **a, int *first)
+void	put_data(char *str, t_list **a)
 {
 	char	**splited;
 	int		i;
@@ -50,7 +50,7 @@ void	put_data(char *str, t_list **a, int *first)
 	splited = ft_split(str, ' ');
 	while (splited[i] != NULL)
 	{
-		if ((*first)++ == 0)
+		if (*a == NULL)
 			*a = ft_lstnew(splited[i]);
 		else
 			ft_lstadd_back(a, ft_lstnew(splited[i]));
@@ -76,9 +76,10 @@ void	is_double_nb(t_list **a, t_list **b, t_list **done)
 		{
 			if (ft_atoi(tmp->content) == ft_atoi(tmp_cmp->content))
 				found++;
-			if (found > 1)
+			if (found > 1 || ft_atoi(tmp->content) > INT_MAX
+				|| ft_atoi(tmp->content) < INT_MIN)
 			{
-				ft_printf("Error\n");
+				ft_putstr_fd("Error\n", 2);
 				clear_all_list(a, b, done);
 			}
 			tmp = tmp->next;

@@ -6,7 +6,7 @@
 #    By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 14:18:05 by nmilan            #+#    #+#              #
-#    Updated: 2023/01/03 13:58:37 by nmilan           ###   ########.fr        #
+#    Updated: 2023/01/05 16:39:25 by nmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ SRC    =	fill_stack.c \
 			utils.c \
 			sort.c \
 			actions.c \
+			action_next.c \
+			sort_big.c
 			
 
 OBJS    =    ${SRC:%.c=%.o}

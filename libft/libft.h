@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:15:21 by nmilan            #+#    #+#             */
-/*   Updated: 2022/12/29 16:21:10 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/05 13:04:55 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_list
 {
 	void			*content;
-	char			*name;
+	int				rank;
 	struct s_list	*next;
 	struct s_list	*previous;
 }					t_list;

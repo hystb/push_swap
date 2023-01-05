@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:27:56 by nmilan            #+#    #+#             */
-/*   Updated: 2022/11/15 18:10:51 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/05 13:07:48 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	long	result;
-	int		sign;
+	int			i;
+	long long	result;
+	int			sign;
 
 	i = 0;
 	sign = 1;

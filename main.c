@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:28:47 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/03 14:02:45 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/05 17:00:00 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,22 @@ int	main(int argc, char **argv)
 	t_list	**b;
 	t_list	**done;
 	int		i;
-	int		first;
 
-	first = 0;
 	i = 0;
 	a = malloc(sizeof(t_list *));
-	if (!a)
-		return (0);
 	b = malloc(sizeof(t_list *));
-	if (!b)
-	{
-		free (a);
-		return (0);
-	}
 	done = malloc(sizeof(t_list *));
-	if (!done)
-	{
-		free (a);
-		free (b);
-		return (0);
-	}
+	alloc_control(a, b, done);
 	if (argc > 1)
 	{
 		while (i < argc - 1)
 		{
-			fill_a(argv[i + 1], a, &first);
+			fill_a(argv[i + 1], a);
 			i++;
 		}
 		is_double_nb(a, b, done);
 		sort(a, b, done);
-		while ((*a)->previous)
+		/*while ((*a)->previous)
 		{
 			*a = (*a)->previous;
 		}
@@ -62,9 +48,26 @@ int	main(int argc, char **argv)
 		ft_printf("current : %p\n", *a);
 		ft_printf("prev : %p\n", (*a)->previous);
 		ft_printf("next : %p\n", (*a)->next);
-		ft_printf("%s\n", (*a)->content);
+		ft_printf("%s\n", (*a)->content);*/
 	}
 	else
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	return (0);
+}
+
+void	alloc_control(t_list **a, t_list **b, t_list **done)
+{
+	if (!a || !b || !done)
+	{
+		if (a)
+			free(a);
+		if (b)
+			free(b);
+		if (done)
+			free(done);
+		exit(1);
+	}
+	*a = NULL;
+	*b = NULL;
+	*done = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:12:55 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/03 15:54:19 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/05 17:22:02 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,31 @@
 # include "ft_printf/ft_printf.h"
 
 void	create_list(t_list **a, t_list **b, t_list **done);
-void	fill_a(char *str, t_list **a, int *first);
+void	fill_a(char *str, t_list **a);
 void	is_correct_nb(char *str);
-void	put_data(char *str, t_list **a, int *first);
+void	put_data(char *str, t_list **a);
 void	is_double_nb(t_list **a, t_list **b, t_list **done);
 void	clear_all_list(t_list **a, t_list **b, t_list **done);
 void	del(void *content);
 void	sort(t_list **a, t_list **b, t_list **done);
 void	sort_short(t_list **a, t_list **b, t_list **done);
-void	swap(t_list **a, t_list **b, t_list **done, char name);
+int		swap(t_list **a, t_list **b, t_list **done, char name);
 void	swap_both(t_list **a, t_list **b, t_list **done);
-void	rrotate(t_list **a, t_list **b, t_list **done, char name);
-void	rreverse_both(t_list **a, t_list **b, t_list **done);
+int		rrotate(t_list **a, t_list **b, t_list **done, char name);
+void	rrotate_both(t_list **a, t_list **b, t_list **done);
 int		is_sorted(t_list **a, int lst_len);
+int		rotate(t_list **a, t_list **b, t_list **done, char name);
+int		rotate_both(t_list **a, t_list **b, t_list **done);
+int		push(t_list **a, t_list **b, t_list **done, char name);
+void	alloc_control(t_list **a, t_list **b, t_list **done);
+int		short_three(t_list **a, t_list **b, t_list **done);
+int		get_value(t_list *lst);
+int		get_lowest(t_list **lst);
+int		get_last(t_list **lst);
+int		r_or_rr(t_list **a, t_list **b, t_list **done, int low_value);
+int		sort_three(t_list **a, t_list **b, t_list **done);
+void	sort_big(t_list **a/*, t_list **b, t_list **done*/);
+void	sort_binary(t_list **a, t_list **b, t_list **done, int len_stack);
+void	rank_value(t_list **a);
 
 #endif

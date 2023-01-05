@@ -6,13 +6,13 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:30:11 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/03 15:44:35 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:02:03 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list **a, t_list **b, t_list **done, char name)
+int	swap(t_list **a, t_list **b, t_list **done, char name)
 {
 	t_list	*tmp;
 	t_list	*swaped;
@@ -37,6 +37,7 @@ void	swap(t_list **a, t_list **b, t_list **done, char name)
 	{
 		swap_both(a, b, done);
 	}
+	return (0);
 }
 
 void	swap_both(t_list **a, t_list **b, t_list **done)
@@ -55,7 +56,7 @@ void	swap_both(t_list **a, t_list **b, t_list **done)
 	ft_lstadd_back(done, ft_lstnew("ss"));
 }
 
-void	rrotate(t_list **a, t_list **b, t_list **done, char name)
+int	rrotate(t_list **a, t_list **b, t_list **done, char name)
 {
 	t_list	*tmp;
 	t_list	*to_reverse;
@@ -79,10 +80,11 @@ void	rrotate(t_list **a, t_list **b, t_list **done, char name)
 		ft_lstadd_back(done, ft_lstnew("rra"));
 	}
 	else if (name == 'c')
-		rreverse_both(a, b, done);
+		rrotate_both(a, b, done);
+	return (0);
 }
 
-void	rreverse_both(t_list **a, t_list **b, t_list **done)
+void	rrotate_both(t_list **a, t_list **b, t_list **done)
 {
 	t_list	*tmp;
 	t_list	*to_reverse;
