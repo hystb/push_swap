@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:15:21 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 13:40:44 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 14:34:47 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_bzero(void *str, size_t n);
 void	*ft_memset(void *str, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t n);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		ft_isalnum(int character);
 int		ft_isalpha(int character);
 int		ft_isascii(int character);

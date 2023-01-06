@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:49:34 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 14:15:40 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 16:17:35 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	sort(t_list **a, t_list **b, t_list **done)
 
 	lst_len = ft_lstsize(*a);
 	*done = ft_lstnew("0");
-	if (lst_len <= 25)
+	if (is_sorted(a, ft_lstsize(*a)))
 	{
-		sort_short(a, b, done);
+		clear_all_list(a, b, done);
+		exit (0);
 	}
+	if (lst_len <= 25)
+		sort_short(a, b, done);
 	else
 		sort_big(a, b, done);
 	to_print = (*done)->next;

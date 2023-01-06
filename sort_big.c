@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:33:51 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 14:15:30 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 16:17:14 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,27 @@ void	prepare_nb(t_list **a)
 	t_list	*tmp;
 	t_list	*tmp_max;
 	int		max;
+	int		max_bin;
 
 	tmp_max = *a;
 	tmp = *a;
 	max = tmp->rank;
+	max_bin = 0;
 	while (tmp_max)
 	{
 		if (tmp_max->rank > max)
 			max = tmp_max->rank;
 		tmp_max = tmp_max->next;
 	}
+	while (max > 0)
+	{
+		max_bin++;
+		max /= 2;
+	}
 	while (tmp)
 	{
 		free(tmp->content);
-		tmp->content = binary_convert(tmp->rank, max);
+		tmp->content = binary_convert(tmp->rank, max_bin);
 		tmp = tmp->next;
 	}
 }

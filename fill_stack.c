@@ -48,6 +48,7 @@ void	put_data(char *str, t_list **a)
 
 	i = 0;
 	splited = ft_split(str, ' ');
+	control_str(splited);
 	while (splited[i] != NULL)
 	{
 		if (*a == NULL)
@@ -86,4 +87,46 @@ void	is_double_nb(t_list **a, t_list **b, t_list **done)
 		}
 		tmp_cmp = tmp_cmp->next;
 	}
+}
+
+void	control_str(char	**splited)
+{
+	int	i;
+
+	i = 0;
+	while (splited[i])
+	{
+		if (ft_strlen(splited[i]) > 11)
+		{
+			free_splited(splited);
+			ft_putstr_fd("Error\n", 2);
+			exit (0);
+		}
+		else if (ft_atoi(splited[i]) > INT_MAX || ft_atoi(splited[i]) < INT_MIN)
+		{
+			free_splited(splited);
+			ft_putstr_fd("Error\n", 2);
+			exit (0);
+		}
+		else if (splited[i][0] == '-' && splited[i][1] == '\0')
+		{
+			free_splited(splited);
+			ft_putstr_fd("Error\n", 2);
+			exit (0);
+		}
+		i++;
+	}	
+}
+
+void	free_splited(char **splited)
+{
+	int	i;
+
+	i = 0;
+	while (splited[i])
+	{
+		free(splited[i]);
+		i++;
+	}
+	free(splited);
 }

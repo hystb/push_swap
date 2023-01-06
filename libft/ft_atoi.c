@@ -6,13 +6,13 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:27:56 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/05 13:07:48 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 14:35:01 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int			i;
 	long long	result;

@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:12:55 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 14:06:33 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 15:44:23 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	rank_value(t_list **a);
 void	prepare_nb(t_list **a);
 void	rev_in_tab(char *tab, int end);
 char	*binary_convert(int nb, int max);
+void	free_splited(char **splited);
+void	control_str(char	**splited);
+void	del_free(void *content);
 
 
 #endif
