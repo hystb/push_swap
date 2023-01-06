@@ -63,42 +63,54 @@ int	rotate_both(t_list **a, t_list **b, t_list **done)
 	return (0);
 }
 
-int	push(t_list **a, t_list **b, t_list **done, char name)
+int	push_a(t_list **a, t_list **b, t_list **done)
 {
 	t_list	*tmp;
 
-	if (name == 'a')
+	if (!*b)
+		return (1);
+	if ((*b)->next != NULL)
 	{
-		if (!*b)
-			return (1);
-		if ((*b)->next != NULL)
-		{
-			tmp = (*b)->next;
-			tmp->previous = NULL;
-		}
-		else
-			tmp = NULL;
-		(*b)->next = NULL;
-		ft_lstadd_front(a, *b);
-		*b = tmp;
-		ft_lstadd_back(done, ft_lstnew("pa"));
+		tmp = (*b)->next;
+		tmp->previous = NULL;
 	}
-	if (name == 'b')
+	else
+		tmp = NULL;
+	(*b)->next = NULL;
+	if (!*b)
 	{
-		if (!*a)
-			return (1);
+		*a = ft_lstnew((*a)->content);
+		free(*b);
+	}
+	else
+		ft_lstadd_front(a, *b);
+	*b = tmp;
+	ft_lstadd_back(done, ft_lstnew("pa"));
+	return (0);
+}
+
+int	push_b(t_list **a, t_list **b, t_list **done)
+{
+	t_list	*tmp;
+
+	if (!*a)
+		return (1);
+	if ((*a)->next != NULL)
+	{
 		tmp = (*a)->next;
 		tmp->previous = NULL;
-		(*a)->next = NULL;
-		if (!*b)
-		{
-			*b = ft_lstnew((*a)->content);
-			free(*a);
-		}
-		else
-			ft_lstadd_front(b, *a);
-		*a = tmp;
-		ft_lstadd_back(done, ft_lstnew("pb"));
 	}
+	else
+		tmp = NULL;
+	(*a)->next = NULL;
+	if (!*b)
+	{
+		*b = ft_lstnew((*a)->content);
+		free(*a);
+	}
+	else
+		ft_lstadd_front(b, *a);
+	*a = tmp;
+	ft_lstadd_back(done, ft_lstnew("pb"));
 	return (0);
 }

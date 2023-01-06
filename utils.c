@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 11:07:28 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/05 13:55:02 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 13:35:05 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,20 @@ int	get_last(t_list **lst)
 	while (tmp->next)
 		tmp = tmp->next;
 	return (ft_atoi(tmp->content));
+}
+
+void	rev_in_tab(char *tab, int end)
+{
+	char	tmp;
+	int		i;
+
+	i = 0;
+	while (i < end)
+	{
+		tmp = tab[i];
+		tab[i] = tab[end];
+		tab[end] = tmp;
+		i++;
+		end--;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:49:34 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/05 16:59:25 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 14:06:56 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sort(t_list **a, t_list **b, t_list **done)
 		sort_short(a, b, done);
 	}
 	else
-		sort_big(a/*, b, done*/);
+		sort_big(a, b, done);
 	/**done = (*done)->next;
 	while (*done)
 	{
@@ -38,14 +38,14 @@ void	sort_short(t_list **a, t_list **b, t_list **done)
 	while (ft_lstsize(*a) > 3)
 	{
 		if (get_value(*a) == get_lowest(a))
-			push(a, b, done, 'b');
+			push_b(a, b, done);
 		else
 			r_or_rr(a, b, done, get_lowest(a));
 	}
 	sort_three(a, b, done);
 	while (*b)
 	{
-		push(a, b, done, 'a');
+		push_a(a, b, done);
 	}
 }
 

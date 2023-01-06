@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:12:55 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/05 17:22:02 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 14:06:33 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	rrotate_both(t_list **a, t_list **b, t_list **done);
 int		is_sorted(t_list **a, int lst_len);
 int		rotate(t_list **a, t_list **b, t_list **done, char name);
 int		rotate_both(t_list **a, t_list **b, t_list **done);
-int		push(t_list **a, t_list **b, t_list **done, char name);
+int		push_a(t_list **a, t_list **b, t_list **done);
+int		push_b(t_list **a, t_list **b, t_list **done);
 void	alloc_control(t_list **a, t_list **b, t_list **done);
 int		short_three(t_list **a, t_list **b, t_list **done);
 int		get_value(t_list *lst);
@@ -44,8 +45,12 @@ int		get_lowest(t_list **lst);
 int		get_last(t_list **lst);
 int		r_or_rr(t_list **a, t_list **b, t_list **done, int low_value);
 int		sort_three(t_list **a, t_list **b, t_list **done);
-void	sort_big(t_list **a/*, t_list **b, t_list **done*/);
+void	sort_big(t_list **a, t_list **b, t_list **done);
 void	sort_binary(t_list **a, t_list **b, t_list **done, int len_stack);
 void	rank_value(t_list **a);
+void	prepare_nb(t_list **a);
+void	rev_in_tab(char *tab, int end);
+char	*binary_convert(int nb, int max);
+
 
 #endif
