@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:28:47 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 13:55:18 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 14:11:22 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,6 @@ int	main(int argc, char **argv)
 		}
 		is_double_nb(a, b, done);
 		sort(a, b, done);
-		while ((*a)->previous)
-		{
-			*a = (*a)->previous;
-		}
-		while ((*a)->next != NULL)
-		{
-			ft_printf("current : %p\n", *a);
-			ft_printf("prev : %p\n", (*a)->previous);
-			ft_printf("next : %p\n", (*a)->next);
-			ft_printf("%d\n", (*a)->rank);
-			(*a) = (*a)->next;
-		}
-		ft_printf("current : %p\n", *a);
-		ft_printf("prev : %p\n", (*a)->previous);
-		ft_printf("next : %p\n", (*a)->next);
-		ft_printf("%d\n", (*a)->rank);
 	}
 	else
 		ft_putstr_fd("Error\n", 2);

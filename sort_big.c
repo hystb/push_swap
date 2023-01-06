@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:33:51 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 14:05:35 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/06 14:15:30 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	sort_big(t_list **a, t_list **b, t_list **done)
 {
-	ft_printf("%p\n", *a);
 	rank_value(a);
 	prepare_nb(a);
 	sort_binary(a, b, done, 0);
