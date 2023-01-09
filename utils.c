@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 11:07:28 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 15:43:57 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/09 12:27:12 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,4 @@ int	get_lowest(t_list **lst)
 		tmp = tmp->next;
 	}
 	return (lowest);
-}
-
-int	get_last(t_list **lst)
-{
-	t_list	*tmp;
-
-	tmp = *lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (ft_atoi(tmp->content));
-}
-
-void	rev_in_tab(char *tab, int end)
-{
-	char	tmp;
-	int		i;
-
-	i = 0;
-	while (i < end)
-	{
-		tmp = tab[i];
-		tab[i] = tab[end];
-		tab[end] = tmp;
-		i++;
-		end--;
-	}
 }

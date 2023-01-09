@@ -12,33 +12,35 @@
 
 #include "push_swap.h"
 
-int	rotate(t_list **a, t_list **b, t_list **done, char name)
+int	rotate_a(t_list **a, t_list **done)
 {
 	t_list	*tmp;
 	t_list	*to_reverse;
 
-	if (name == 'a')
-	{
-		to_reverse = *a;
-		tmp = (*a)->next;
-		to_reverse->next = NULL;
-		tmp->previous = NULL;
-		*a = tmp;
-		ft_lstadd_back(a, to_reverse);
-		ft_lstadd_back(done, ft_lstnew("ra"));
-	}
-	else if (name == 'b')
-	{
-		to_reverse = *b;
-		tmp = (*b)->next;
-		to_reverse->next = NULL;
-		tmp->previous = NULL;
-		*b = tmp;
-		if (*b == NULL)
-			*b = to_reverse;
-		ft_lstadd_back(b, to_reverse);
-		ft_lstadd_back(done, ft_lstnew("rb"));
-	}
+	to_reverse = *a;
+	tmp = (*a)->next;
+	to_reverse->next = NULL;
+	tmp->previous = NULL;
+	*a = tmp;
+	ft_lstadd_back(a, to_reverse);
+	ft_lstadd_back(done, ft_lstnew("ra"));
+	return (0);
+}
+
+int	rotate_b(t_list **b, t_list **done)
+{
+	t_list	*tmp;
+	t_list	*to_reverse;
+
+	to_reverse = *b;
+	tmp = (*b)->next;
+	to_reverse->next = NULL;
+	tmp->previous = NULL;
+	*b = tmp;
+	if (*b == NULL)
+		*b = to_reverse;
+	ft_lstadd_back(b, to_reverse);
+	ft_lstadd_back(done, ft_lstnew("rb"));
 	return (0);
 }
 
@@ -80,6 +82,8 @@ int	push_a(t_list **a, t_list **b, t_list **done)
 	if (!*b)
 	{
 		*a = ft_lstnew((*a)->content);
+		if (!*a)
+			clear_all_list(a, b, done);
 		free(*b);
 	}
 	else
@@ -106,6 +110,8 @@ int	push_b(t_list **a, t_list **b, t_list **done)
 	if (!*b)
 	{
 		*b = ft_lstnew((*a)->content);
+		if (!*b)
+			clear_all_list(a, b, done);
 		free(*a);
 	}
 	else

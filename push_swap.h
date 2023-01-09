@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:12:55 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 15:44:23 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/09 13:12:29 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	swap_both(t_list **a, t_list **b, t_list **done);
 int		rrotate(t_list **a, t_list **b, t_list **done, char name);
 void	rrotate_both(t_list **a, t_list **b, t_list **done);
 int		is_sorted(t_list **a, int lst_len);
-int		rotate(t_list **a, t_list **b, t_list **done, char name);
+int		rotate_a(t_list **a, t_list **done);
+int		rotate_b(t_list **b, t_list **done);
 int		rotate_both(t_list **a, t_list **b, t_list **done);
 int		push_a(t_list **a, t_list **b, t_list **done);
 int		push_b(t_list **a, t_list **b, t_list **done);
@@ -54,6 +55,6 @@ char	*binary_convert(int nb, int max);
 void	free_splited(char **splited);
 void	control_str(char	**splited);
 void	del_free(void *content);
-
+void	put_value_binary(t_list *tmp, int max_bin);
 
 #endif

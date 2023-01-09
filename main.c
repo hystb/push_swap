@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:28:47 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 15:36:39 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/09 12:55:55 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 			fill_a(argv[i + 1], a);
 			i++;
 		}
+		if (!*a)
+			clear_all_list(a, b, done);
 		is_double_nb(a, b, done);
 		sort(a, b, done);
 	}

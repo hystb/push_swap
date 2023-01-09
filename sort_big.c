@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:33:51 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 16:17:14 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/09 13:11:47 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 void	sort_big(t_list **a, t_list **b, t_list **done)
 {
+	t_list	*tmp;
+
+	tmp = *a;
 	rank_value(a);
 	prepare_nb(a);
+	while (tmp)
+	{
+		if (!tmp->content)
+			clear_all_list(a, b, done);
+		tmp = tmp->next;
+	}
 	sort_binary(a, b, done, 0);
 }
 
@@ -34,7 +43,7 @@ void	sort_binary(t_list **a, t_list **b, t_list **done, int len_stack)
 			if (ft_memcmp((*a)->content + len, "0", 1) == 0)
 				push_b(a, b, done);
 			else
-				rotate(a, b, done, 'a');
+				rotate_a(a, done);
 		}
 		while (ft_lstsize(*b))
 			push_a(a, b, done);
@@ -107,10 +116,5 @@ void	prepare_nb(t_list **a)
 		max_bin++;
 		max /= 2;
 	}
-	while (tmp)
-	{
-		free(tmp->content);
-		tmp->content = binary_convert(tmp->rank, max_bin);
-		tmp = tmp->next;
-	}
+	put_value_binary(tmp, max_bin);
 }

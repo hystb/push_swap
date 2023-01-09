@@ -6,7 +6,7 @@
 #    By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 14:18:05 by nmilan            #+#    #+#              #
-#    Updated: 2023/01/06 15:33:14 by nmilan           ###   ########.fr        #
+#    Updated: 2023/01/09 13:24:43 by nmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC    =	fill_stack.c \
 			sort.c \
 			actions.c \
 			action_next.c \
-			sort_big.c
+			sort_big.c \
+			change_stack.c
 			
 
 OBJS    =    ${SRC:%.c=%.o}
@@ -49,7 +50,7 @@ lib:
 lib_pf:
 	make -C $(FT_PRINTF_PATH)
 
-${NAME} : lib lib_pf ${OBJS}
+${NAME} : lib lib_pf ${OBJS} Makefile
 			$(CC) $(OBJS) $(LIBFT_LIB) $(FT_PRINTF_LIB) -o $(NAME)
 clean :
 	make clean -C $(LIBFT_PATH)

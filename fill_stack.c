@@ -48,11 +48,20 @@ void	put_data(char *str, t_list **a)
 
 	i = 0;
 	splited = ft_split(str, ' ');
+	if (!splited)
+	{
+		free_splited(splited);
+		exit (1);
+	}
 	control_str(splited);
 	while (splited[i] != NULL)
 	{
 		if (*a == NULL)
+		{
 			*a = ft_lstnew(splited[i]);
+			if (!*a)
+				return ;
+		}
 		else
 			ft_lstadd_back(a, ft_lstnew(splited[i]));
 		i++;
@@ -89,7 +98,7 @@ void	is_double_nb(t_list **a, t_list **b, t_list **done)
 	}
 }
 
-void	control_str(char	**splited)
+void	control_str(char **splited)
 {
 	int	i;
 
@@ -116,17 +125,4 @@ void	control_str(char	**splited)
 		}
 		i++;
 	}	
-}
-
-void	free_splited(char **splited)
-{
-	int	i;
-
-	i = 0;
-	while (splited[i])
-	{
-		free(splited[i]);
-		i++;
-	}
-	free(splited);
 }

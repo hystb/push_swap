@@ -6,7 +6,7 @@
 /*   By: nmilan <nmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:49:34 by nmilan            #+#    #+#             */
-/*   Updated: 2023/01/06 16:17:35 by nmilan           ###   ########.fr       */
+/*   Updated: 2023/01/09 13:11:12 by nmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ void	sort(t_list **a, t_list **b, t_list **done)
 
 	lst_len = ft_lstsize(*a);
 	*done = ft_lstnew("0");
-	if (is_sorted(a, ft_lstsize(*a)))
-	{
+	if (!*done)
 		clear_all_list(a, b, done);
-		exit (0);
-	}
+	if (is_sorted(a, ft_lstsize(*a)))
+		clear_all_list(a, b, done);
 	if (lst_len <= 25)
 		sort_short(a, b, done);
 	else
@@ -62,7 +61,7 @@ int	sort_three(t_list **a, t_list **b, t_list **done)
 		return (swap(a, b, done, 'a') + rrotate(a, b, done, 'a'));
 	else if (get_value(*a) > get_value((*a)->next) && \
 		get_last(a) < get_value(*a) && get_value((*a)->next) < get_last(a))
-		return (rotate(a, b, done, 'a'));
+		return (rotate_a(a, done));
 	else if (get_value(*a) < get_value((*a)->next) && \
 		get_last(a) > get_value(*a))
 		return (rrotate(a, b, done, 'a') + swap(a, b, done, 'a'));
@@ -106,6 +105,6 @@ int	r_or_rr(t_list **a, t_list **b, t_list **done, int low_value)
 	if (pos > (ft_lstsize(*a) / 2))
 		rrotate(a, b, done, 'a');
 	else
-		rotate(a, b, done, 'a');
+		rotate_a(a, done);
 	return (0);
 }
